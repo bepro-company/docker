@@ -93,3 +93,6 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
 RUN make -j$(nproc)
 RUN make install
 
+RUN rm -rf $ROOT_DIR/nv-codec-headers
+RUN rm -rf $ROOT_DIR/ffmpeg
+RUN rm -rf $ROOT_DIR/opencv-3.4.1
