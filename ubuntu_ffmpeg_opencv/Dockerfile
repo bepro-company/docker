@@ -96,3 +96,5 @@ RUN make install
 RUN rm -rf $ROOT_DIR/nv-codec-headers
 RUN rm -rf $ROOT_DIR/ffmpeg
 RUN rm -rf $ROOT_DIR/opencv-3.4.1
+RUN rm -rf $ROOT_DIR/opencv_contrib-3.4.1
+RUN rm -rf /var/lib/apt/lists/*
