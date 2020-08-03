@@ -21,7 +21,10 @@ FROM python:3.7-slim as release
 # ffmpeg과 관련된 libgomp1 라이브러리 설치
 # bepro-python과 관련된 procps, gcc, git 설치
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libgomp1 procps gcc git \
+    && apt-get install -y --no-install-recommends libgomp1=8.3.0-6 \
+       procps=2:3.3.15-2 \ 
+       gcc=4:8.3.0-1 \ 
+       git=1:2.20.1-2+deb10u3 \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists*
 
