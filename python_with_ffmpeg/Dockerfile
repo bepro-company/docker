@@ -17,8 +17,9 @@ RUN curl -sSLO https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google
 FROM python:3.7-slim as release
 
 # ffmpeg과 관련된 libgomp1 라이브러리 설치
+# bepro-python과 관련된 procps, gcc, git 설치
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libgomp1 procps \
+    && apt-get install -y --no-install-recommends libgomp1 procps gcc git \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists*
 
