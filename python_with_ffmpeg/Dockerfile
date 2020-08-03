@@ -1,9 +1,42 @@
-FROM    python:3.7.8
-USER    root
-RUN     apt-get update -y && \
-        apt-get install ffmpeg -y && \
-        apt-get install curl -y && \
-        apt-get autoremove -y && \
-        apt-get clean -y && \
-        curl -sSL https://sdk.cloud.google.com | bash
-ENV     PATH $PATH:/root/google-cloud-sdk/bin
+# ffmpeg 빌드를 위한 도커 이미지
+# https://hub.docker.com/r/jrottenberg/ffmpeg/dockerfile
+FROM jrottenberg/ffmpeg:4.3-ubuntu1804 as base
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl=7.58.0-2ubuntu3.9 \
+    && apt-get purge -y --auto-remove \
+    && rm -rf /var/lib/apt/lists*
+
+ENV GOOGLE_CLOUD_SDK_VERSION=303.0.0
+WORKDIR /google-cloud/src
+RUN curl -sSLO https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz \
+    && tar xvzf google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz \
+    && rm google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz
+
+
+FROM python:3.7-slim as release
+
+# ffmpeg과 관련된 libgomp1 라이브러리 설치
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libgomp1 \
+    && apt-get purge -y --auto-remove \
+    && rm -rf /var/lib/apt/lists*
+
+# google-cloud-sdk 설치 
+WORKDIR /google-cloud-sdk
+COPY --from=base /google-cloud/src/google-cloud-sdk /google-cloud-sdk
+RUN ./install.sh \
+     --usage-reporting=false \
+     --path-update=true \
+     --bash-completion=true \
+     --rc-path=/.bashrc \
+     --quiet
+
+# ffmpeg, ffprobe 바이너리 설치
+COPY --from=base /usr/local /usr/local/
+
+# gcloud binary PATH 추가
+ENV PATH $PATH:/google-cloud-sdk/bin
+
+# ffmpeg 라이브러리 연동
+ENV LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
