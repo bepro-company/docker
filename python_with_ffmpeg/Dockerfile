@@ -42,7 +42,7 @@ RUN ./install.sh \
 COPY --from=base /usr/local /usr/local/
 
 # gcloud binary PATH 추가
-ENV PATH $PATH:/google-cloud-sdk/bin
+ENV PATH=$PATH:/google-cloud-sdk/bin
 
 # ffmpeg 라이브러리 연동
 ENV LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
