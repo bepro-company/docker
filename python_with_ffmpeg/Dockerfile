@@ -25,6 +25,7 @@ RUN apt-get update \
        procps=2:3.3.15-2 \ 
        gcc=4:8.3.0-1 \ 
        git=1:2.20.1-2+deb10u3 \
+       libc6-dev=2.28-10 \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists*
 
