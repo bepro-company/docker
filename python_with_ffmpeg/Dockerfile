@@ -3,7 +3,7 @@
 FROM jrottenberg/ffmpeg:4.3-ubuntu1804 as base
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl=7.58.0-2ubuntu3.9 \
+    && apt-get install -y --no-install-recommends curl=7.58.0-2ubuntu3.10 \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists*
 
