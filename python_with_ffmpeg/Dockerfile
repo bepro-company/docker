@@ -19,6 +19,7 @@ RUN curl -sSLO https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google
 FROM python:3.7-slim as release
 
 # ffmpeg과 관련된 libgomp1 라이브러리 설치
+# opencv와 관련된 libglib2 라이브러리 설치
 # bepro-python과 관련된 procps, gcc, git 설치
 RUN apt-get update \
     && apt-get install -y --no-install-recommends libgomp1=8.3.0-6 \
@@ -26,6 +27,7 @@ RUN apt-get update \
        gcc=4:8.3.0-1 \ 
        git=1:2.20.1-2+deb10u3 \
        libc6-dev=2.28-10 \
+       libglib2.0-0 \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists*
 
