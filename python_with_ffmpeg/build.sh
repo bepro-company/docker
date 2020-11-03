@@ -9,7 +9,7 @@ docker push bepro/python_with_ffmpeg:latest
 docker push bepro/python_with_ffmpeg:3.7
 
 # libcairo: for bepro-python github actions
-docker build -t "ghcr.io/bepro-company/docker/python_with_ffmpeg:3.7-libcairo" -f Dockerfile.libcairo .
+docker build -t "python_with_ffmpeg:3.7-libcairo" -t "ghcr.io/bepro-company/docker/python_with_ffmpeg:3.7-libcairo" -f Dockerfile.libcairo .
 
 # CR_USER: github user id
 # CR_PAT: https://docs.github.com/en/free-pro-team@latest/packages/managing-container-images-with-github-container-registry/pushing-and-pulling-docker-images#authenticating-to-github-container-registry
