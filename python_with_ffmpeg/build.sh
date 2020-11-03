@@ -24,4 +24,3 @@ then
 else
   echo "CR_USER, CR_PAT environment variables required!"
 fi
-
