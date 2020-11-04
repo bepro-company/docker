@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: python:3.7-slim-bullseye가 나오면 ffmpeg 4.3 을 쓸 수 있으므로 Dockerfile 하나로 통합 가능. 혹은 alpine 3.12도 가능해보이나 테스트 필요
+
 # default: for bepro-python-api
 docker build -t "python_with_ffmpeg:3.7" -t "python_with_ffmpeg" .
 docker tag python_with_ffmpeg:latest bepro/python_with_ffmpeg:latest
