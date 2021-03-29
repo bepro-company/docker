@@ -35,4 +35,3 @@ RUN /root/hlsserver.sh
 
 WORKDIR /root
 ENTRYPOINT ["/bin/bash"]
-LABEL Name=bepro_stitching Version=0.0.1
