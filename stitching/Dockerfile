@@ -33,5 +33,9 @@ ADD hlsserver.sh /root
 RUN chmod +x /root/hlsserver.sh
 RUN /root/hlsserver.sh
 
+ADD tensorflow.sh /root
+RUN chmod +x /root/tensorflow.sh
+RUN /root/tensorflow.sh
+
 WORKDIR /root
 ENTRYPOINT ["/bin/bash"]
