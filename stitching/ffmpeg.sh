@@ -23,7 +23,4 @@ cd ffmpeg
   --enable-libx265 \
   --extra-cflags=-I/usr/local/cuda/include \
   --extra-ldflags=-L/usr/local/cuda/lib64
-make -j$(nproc)
-make install
-ldconfig
-ffmpeg -version
+make -j$(nproc) && make install

@@ -7,5 +7,4 @@ tar -zxvf live555-latest.tar.gz
 rm live555-latest.tar.gz
 cd live/
 ./genMakefiles linux-with-shared-libraries
-make -j$(nproc)
-make install
+make -j$(nproc) && make install

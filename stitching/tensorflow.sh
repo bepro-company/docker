@@ -17,7 +17,4 @@ echo "2.0.0" > PROJECT_VERSION
 mkdir build
 cd build
 cmake ..
-make -j$(nproc)
-make install
-
-pip3 install tensorflow-gpu==2.0.0a0
+make -j$(nproc) && make install && pip3 install tensorflow-gpu==2.0.0a0

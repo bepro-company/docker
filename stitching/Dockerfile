@@ -13,29 +13,30 @@ RUN \
       pip install numpy && \
       pip3 install numpy
 
-ADD nvcodec.sh /root
-RUN chmod +x /root/nvcodec.sh
-RUN /root/nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
-
-ADD ffmpeg.sh /root
-RUN chmod +x /root/ffmpeg.sh
-RUN /root/ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg
-
-ADD opencv.sh /root
-RUN chmod +x /root/opencv.sh
-RUN /root/opencv.sh && rm -rfv opencv.sh opencv-3.4.1 opencv_contrib-3.4.1
-
-ADD live555.sh /root
-RUN chmod +x /root/live555.sh
-RUN /root/live555.sh && rm -rfv live555.sh live
-
-ADD hlsserver.sh /root
-RUN chmod +x /root/hlsserver.sh
-RUN /root/hlsserver.sh && rm -rfv hlsserver.sh hls-server
-
-ADD tensorflow.sh /root
-RUN chmod +x /root/tensorflow.sh
-RUN /root/tensorflow.sh && rm -rfv tensorflow.sh tensorflow_cc
-
 WORKDIR /root
+
+ADD nvcodec.sh .
+RUN chmod +x nvcodec.sh
+RUN ./nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
+
+ADD ffmpeg.sh .
+RUN chmod +x ffmpeg.sh
+RUN ./ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
+
+ADD opencv.sh .
+RUN chmod +x opencv.sh
+RUN ./opencv.sh && rm -rfv opencv.sh opencv-3.4.1 opencv_contrib-3.4.1
+
+ADD live555.sh .
+RUN chmod +x live555.sh
+RUN ./live555.sh && rm -rfv live555.sh live
+
+ADD hlsserver.sh .
+RUN chmod +x hlsserver.sh
+RUN ./hlsserver.sh && rm -rfv hlsserver.sh hls-server
+
+ADD tensorflow.sh .
+RUN chmod +x tensorflow.sh
+RUN ./tensorflow.sh && rm -rfv tensorflow.sh tensorflow_cc
+
 ENTRYPOINT ["/bin/bash"]

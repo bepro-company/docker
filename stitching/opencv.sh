@@ -28,5 +28,4 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
   -D BUILD_NEW_PYTHON_SUPPORT=ON \
   -D BUILD_opencv_cudacodec=OFF \
   ../
-make -j$(nproc)
-make install
+make -j$(nproc) && make install
