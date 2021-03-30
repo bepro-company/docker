@@ -1,4 +1,4 @@
-tag_name=bepro/stitching:cuda-11.2
+tag_name=bepro/stitching:cuda-11.1
 
 build:
 	docker build -t $(tag_name) .

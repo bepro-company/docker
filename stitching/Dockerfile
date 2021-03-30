@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.2.2-cudnn8-devel-ubuntu18.04
+FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu18.04
 
 RUN \
       apt-get update -y && \
@@ -25,7 +25,7 @@ RUN ./ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
 
 ADD opencv.sh .
 RUN chmod +x opencv.sh
-RUN ./opencv.sh && rm -rfv opencv.sh opencv-3.4.1 opencv_contrib-3.4.1
+RUN ./opencv.sh && rm -rfv opencv.sh opencv-3.4.12 opencv_contrib-3.4.12
 
 ADD live555.sh .
 RUN chmod +x live555.sh
