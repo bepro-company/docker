@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu18.04
+FROM floopcz/tensorflow_cc:ubuntu-cuda-2.4.1
 
 RUN \
       apt-get update -y && \
@@ -35,9 +35,6 @@ ADD hlsserver.sh .
 RUN chmod +x hlsserver.sh
 RUN ./hlsserver.sh && rm -rfv hlsserver.sh hls-server
 
-ADD tensorflow.sh .
-RUN chmod +x tensorflow.sh
-RUN ./tensorflow.sh && rm -rfv tensorflow.sh tensorflow_cc
 RUN pip3 install tensorflow-gpu==2.0.0a0
 
 ENTRYPOINT ["/bin/bash"]
