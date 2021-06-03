@@ -35,6 +35,6 @@ ADD hlsserver.sh .
 RUN chmod +x hlsserver.sh
 RUN ./hlsserver.sh && rm -rfv hlsserver.sh hls-server
 
-RUN pip3 install tensorflow-gpu==2.5.0
+RUN pip3 install pip==21 && python3 -m pip install tensorflow-gpu==2.5.0
 
 ENTRYPOINT ["/bin/bash"]
