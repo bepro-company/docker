@@ -1,4 +1,4 @@
-FROM floopcz/tensorflow_cc:ubuntu-cuda-2.4.1
+FROM bepro/tensorflow_cc:ubuntu-cuda-2.5.0
 
 RUN \
       apt-get update -y && \
@@ -35,6 +35,6 @@ ADD hlsserver.sh .
 RUN chmod +x hlsserver.sh
 RUN ./hlsserver.sh && rm -rfv hlsserver.sh hls-server
 
-RUN pip3 install tensorflow-gpu==2.0.0a0
+RUN pip3 install tensorflow-gpu==2.5.0
 
 ENTRYPOINT ["/bin/bash"]
