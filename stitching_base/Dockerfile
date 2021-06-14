@@ -1,12 +1,13 @@
 FROM bepro/tensorflow_cc:ubuntu-cuda-2.5.0
 
 RUN \
-      apt-get update -y && \
+      apt-get install -y --no-install-recommends software-properties-common && \
       add-apt-repository -y "deb http://security.ubuntu.com/ubuntu xenial-security main" && \
+      apt-get update -y && \
       apt-get install -y --no-install-recommends \
-       curl wget build-essential unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev libpng-dev software-properties-common \
-       libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev \
-       libjasper1 libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev && \
+       curl wget build-essential unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev libpng-dev libx264-dev libx265-dev \
+       libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev libjasper1 libtiff-dev \
+       libavcodec-dev libavformat-dev libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev && \
       cd /usr/include/linux && \
       ln -s -f ../libv4l1-videodev.h videodev.h && \
       apt-get install -y --no-install-recommends \
