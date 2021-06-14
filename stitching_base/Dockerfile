@@ -19,7 +19,7 @@ RUN \
 
 WORKDIR /root
 
-ADD *.sh .
+ADD *.sh ./
 RUN chmod +x nvcodec.sh && ./nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
 RUN chmod +x ffmpeg.sh && ./ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
 RUN chmod +x opencv.sh && ./opencv.sh && rm -rfv opencv.sh opencv-3.4.12 opencv_contrib-3.4.12
