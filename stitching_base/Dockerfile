@@ -1,11 +1,11 @@
 FROM bepro/tensorflow_cc:ubuntu-cuda-2.5.0
 
 RUN \
+      apt-get update -y && \
+      # software-properties-common for add-apt-repository
+      apt-get install -y --no-install-recommends software-properties-common curl && \
       # node v14 (LTS until 2023-04-30)
       curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-      apt-get update -y && \
-      # for add-apt-repository
-      apt-get install -y --no-install-recommends software-properties-common && \
       # xenial-security required for libjasper1
       add-apt-repository -y "deb http://security.ubuntu.com/ubuntu xenial-security main" && \
       apt-get install -y --no-install-recommends \
