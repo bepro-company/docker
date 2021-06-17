@@ -26,10 +26,10 @@ RUN \
 WORKDIR /root
 
 ADD *.sh ./
-RUN chmod +x nvcodec.sh && ./nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
-RUN chmod +x ffmpeg.sh && ./ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
-RUN chmod +x opencv.sh && ./opencv.sh && rm -rfv opencv.sh opencv-3.4.12 opencv_contrib-3.4.12
-RUN chmod +x live555.sh && ./live555.sh && rm -rfv live555.sh live
-RUN chmod +x hlsserver.sh && ./hlsserver.sh && rm -rfv hlsserver.sh hls-server
+RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
+RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
+RUN bash opencv.sh && rm -rfv opencv.sh opencv-3.4.12 opencv_contrib-3.4.12
+RUN bash live555.sh && rm -rfv live555.sh live
+RUN bash hlsserver.sh && rm -rfv hlsserver.sh hls-server
 
 ENTRYPOINT ["/bin/bash"]
