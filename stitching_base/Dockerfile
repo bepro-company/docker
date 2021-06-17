@@ -4,12 +4,12 @@ RUN \
       apt-get update -y && \
       # software-properties-common for add-apt-repository
       apt-get install -y --no-install-recommends software-properties-common curl && \
-      # node v14 (LTS until 2023-04-30)
-      curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
       # xenial-security required for libjasper1
       add-apt-repository -y "deb http://security.ubuntu.com/ubuntu xenial-security main" && \
+      # node v14 (LTS until 2023-04-30)
+      curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
       apt-get install -y --no-install-recommends \
-       python3.7 python3.7-dev python3.7-venv python3-pip nodejs curl wget build-essential unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev \
+       python3.7 python3.7-dev python3.7-venv python3-pip nodejs wget build-essential unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev \
        libpng-dev libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev \
        libjasper1 libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev && \
       update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
