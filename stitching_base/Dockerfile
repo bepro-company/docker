@@ -1,9 +1,10 @@
 FROM bepro/tensorflow_cc:ubuntu-cuda-2.5.0
 
-# xenial-security required because of libjasper1
 RUN \
       apt-get update -y && \
+      # for add-apt-repository
       apt-get install -y --no-install-recommends software-properties-common && \
+      # xenial-security required for libjasper1
       add-apt-repository -y "deb http://security.ubuntu.com/ubuntu xenial-security main" && \
       apt-get install -y --no-install-recommends \
        python3.7 python3.7-dev python3.7-venv python3-pip curl wget build-essential unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev \
