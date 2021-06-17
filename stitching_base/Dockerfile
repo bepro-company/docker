@@ -1,5 +1,6 @@
 FROM bepro/tensorflow_cc:ubuntu-cuda-2.5.0
 
+# xenial-security required because of libjasper1
 RUN \
       apt-get update -y && \
       apt-get install -y --no-install-recommends software-properties-common && \
