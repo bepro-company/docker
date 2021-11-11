@@ -15,8 +15,8 @@ RUN \
       # node v14 (LTS until 2023-04-30)
       curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
       apt-get install -y --no-install-recommends \
-       python3.7 python3.7-dev python3.7-venv python3-pip python3-setuptools python3-numpy \
-       nodejs build-essential unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev \
+       python3.7 python3.7-dev python3.7-venv python3-pip python3-setuptools python3-numpy nodejs build-essential \
+       automake libtool unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev \
        libpng-dev libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev \
        libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev libjasper1 libtiff-dev libavcodec-dev libavformat-dev \
        libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev && \
