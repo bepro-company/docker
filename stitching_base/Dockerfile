@@ -32,7 +32,7 @@ RUN \
        libzbar-dev libzbar0 libnvvpi1 vpi1-dev libmediainfo-dev mediainfo libqrencode-dev \
        gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
        gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc && \
-      apt-get install --reinstall ca-certificates
+      apt-get install --reinstall ca-certificates && \
       rm -rf /var/lib/apt/lists/* && \
       pip install cmake --upgrade && ln /usr/local/bin/cmake /usr/bin/cmake
 
