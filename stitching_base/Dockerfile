@@ -20,6 +20,7 @@ RUN \
        libpng-dev libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev \
        libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev libjasper1 libtiff-dev libavcodec-dev libavformat-dev \
        libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev && \
+      # use python 3.7
       update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
       update-alternatives --config python3 && \
       cd /usr/include/linux && \
@@ -34,7 +35,9 @@ RUN \
        gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc && \
       apt-get install --reinstall ca-certificates && \
       rm -rf /var/lib/apt/lists/* && \
-      pip3 install cmake --upgrade && ln /usr/local/bin/cmake /usr/bin/cmake
+      # use latest cmake
+      pip3 install cmake --upgrade && \
+      update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force
 
 WORKDIR /root
 
