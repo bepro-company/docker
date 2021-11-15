@@ -50,5 +50,6 @@ RUN bash hlsserver.sh && rm -rfv hlsserver.sh hls-server
 RUN bash googletest.sh && rm -rfv googletest.sh googletest
 RUN bash gst-qroverlay.sh && rm -rfv gst-qroverlay.sh gst-qroverlay
 RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
+RUN bash spdlog.sh && rm -rfv spdlog
 
 ENTRYPOINT ["/bin/bash"]
