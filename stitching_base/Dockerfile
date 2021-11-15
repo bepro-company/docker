@@ -41,15 +41,31 @@ RUN \
 
 WORKDIR /root
 
-ADD *.sh ./
+ADD nvcodec.sh .
 RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
+
+ADD ffmpeg.sh .
 RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
+
+ADD opencv.sh .
 RUN bash opencv.sh && rm -rfv opencv.sh opencv-3.4.12 opencv_contrib-3.4.12
+
+ADD live555.sh .
 RUN bash live555.sh && rm -rfv live555.sh live
+
+ADD hlsserver.sh .
 RUN bash hlsserver.sh && rm -rfv hlsserver.sh hls-server
+
+ADD googletest.sh .
 RUN bash googletest.sh && rm -rfv googletest.sh googletest
+
+ADD gst-qroverlay.sh .
 RUN bash gst-qroverlay.sh && rm -rfv gst-qroverlay.sh gst-qroverlay
+
+ADD qr-lipsync.sh .
 RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
+
+ADD spdlog.sh .
 RUN bash spdlog.sh && rm -rfv spdlog
 
 ENTRYPOINT ["/bin/bash"]
