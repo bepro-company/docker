@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # ffmpeg
-cd ~
 git clone --single-branch --branch release/4.2 https://git.ffmpeg.org/ffmpeg.git
 cd ffmpeg
 ./configure \
