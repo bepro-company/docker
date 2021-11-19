@@ -66,6 +66,6 @@ ADD qr-lipsync.sh .
 RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
 
 ADD spdlog.sh .
-RUN bash spdlog.sh && rm -rfv spdlog
+RUN bash spdlog.sh && rm -rfv spdlog.sh spdlog
 
 ENTRYPOINT ["/bin/bash"]
