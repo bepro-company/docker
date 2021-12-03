@@ -51,7 +51,7 @@ ADD opencv.sh .
 RUN bash opencv.sh && rm -rfv opencv.sh opencv-3.4.12 opencv_contrib-3.4.12
 
 ADD live555.sh .
-RUN bash live555.sh && rm -rfv live555.sh live
+RUN bash live555.sh && rm -rfv live555.sh
 
 ADD hlsserver.sh .
 RUN bash hlsserver.sh && rm -rfv hlsserver.sh hls-server
