@@ -37,7 +37,13 @@ RUN \
       rm -rf /var/lib/apt/lists/* && \
       # use latest cmake
       pip3 install cmake --upgrade && \
-      update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force
+      update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force && \
+      # pvs-studio static analyzer
+      wget -q -O - https://files.pvs-studio.com/etc/pubkey.txt | apt-key add - && \
+      wget -O /etc/apt/sources.list.d/viva64.list https://files.pvs-studio.com/etc/viva64.list && \
+      apt update -yq && apt install -yq pvs-studio strace && \ 
+      pvs-studio --version && \
+      apt clean -yq
 
 WORKDIR /root
 
