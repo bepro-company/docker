@@ -25,6 +25,7 @@ RUN \
       update-alternatives --config python3 && \
       cd /usr/include/linux && \
       ln -s -f ../libv4l1-videodev.h videodev.h && \
+      # libgirepository1.0-dev required for gi module in python (for stitching unit test)
       apt-get install -y --no-install-recommends \
        sudo g++-7 gdb clang-format-10 libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgtk2.0-dev libtbb-dev \
        qt5-default libatlas-base-dev libfaac-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev \
@@ -32,7 +33,7 @@ RUN \
        libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libglfw3-dev libglfw3 freeglut3-dev \
        libzbar-dev libzbar0 libnvvpi1 vpi1-dev libmediainfo-dev mediainfo libqrencode-dev \
        gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
-       gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc && \
+       gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc libgirepository1.0-dev && \
       apt-get install --reinstall ca-certificates && \
       rm -rf /var/lib/apt/lists/* && \
       # use latest cmake
