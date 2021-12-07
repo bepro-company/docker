@@ -28,7 +28,7 @@ RUN \
       apt-get install --reinstall ca-certificates && \
       rm -rf /var/lib/apt/lists/* && \
       # use latest cmake
-      pip3 install -U pip && \
+      pip3 install pip==21.3.1 && \
       pip install scikit-build && \
       pip install cmake --upgrade && \
       update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force && \
@@ -49,7 +49,7 @@ ADD opencv.sh.arm64 ./opencv.sh
 RUN bash opencv.sh && rm -rfv opencv.sh
 
 ADD live555.sh .
-RUN bash live555.sh && rm -rfv live555.sh live
+RUN bash live555.sh && rm -rfv live555.sh
 
 ADD hlsserver.sh .
 RUN bash hlsserver.sh && rm -rfv hlsserver.sh hls-server
