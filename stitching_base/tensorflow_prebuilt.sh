@@ -5,7 +5,7 @@ unzip protobuf-cpp-3.9.2.zip
 cd protobuf-3.9.2/cmake
 mkdir build && cd build
 cmake ..
-make -j8
+make -j$(nproc)
 sudo make install
 cd ~
 rm -v protobuf-cpp-3.9.2.zip
