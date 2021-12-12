@@ -33,7 +33,13 @@ RUN \
        libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libglfw3-dev libglfw3 freeglut3-dev \
        libzbar-dev libzbar0 libnvvpi1 vpi1-dev libmediainfo-dev mediainfo libqrencode-dev \
        gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
-       gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc libgirepository1.0-dev && \
+       gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc && libgirepository1.0-dev && \
+      # pvs-studio static analyzer
+      wget -q -O - https://files.pvs-studio.com/etc/pubkey.txt | apt-key add - && \
+      wget -O /etc/apt/sources.list.d/viva64.list https://files.pvs-studio.com/etc/viva64.list && \
+      apt update -yq && apt install -yq pvs-studio strace && \ 
+      pvs-studio --version && \
+      apt clean -yq && \
       apt-get install --reinstall ca-certificates && \
       rm -rf /var/lib/apt/lists/* && \
       # use latest cmake
