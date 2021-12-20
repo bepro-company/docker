@@ -66,6 +66,9 @@ RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
 ADD spdlog.sh .
 RUN bash spdlog.sh && rm -rfv spdlog.sh spdlog
 
+ADD ffmpeg.sh .
+RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
+
 # for import numpy
 ENV OPENBLAS_CORETYPE=ARMV8
 # basler mipi camera detect
