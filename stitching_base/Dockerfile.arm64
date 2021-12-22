@@ -35,7 +35,12 @@ RUN \
       # dvc work around
       pip install pygit2 && \
       pip install --no-cache-dir --exists-action w 'dvc[gs]' && \
-      pip install gcovr
+      wget -q -O - https://files.pvs-studio.com/etc/pubkey.txt | apt-key add - && \
+      wget -O /etc/apt/sources.list.d/viva64.list https://files.pvs-studio.com/etc/viva64.list && \
+      apt update -yq && apt install -yq pvs-studio strace && \ 
+      pvs-studio --version && \
+      apt clean -yq
+
 WORKDIR /root
 
 # is this used?
