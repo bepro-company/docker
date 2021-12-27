@@ -40,12 +40,16 @@ RUN \
       apt update -yq && apt install -yq pvs-studio strace && \ 
       pvs-studio --version && \
       apt clean -yq && \
+      echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | \
+      tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
+      apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && \ 
+      apt-get update -y && apt-get install google-cloud-sdk -y && \
       apt-get install --reinstall ca-certificates && \
       rm -rf /var/lib/apt/lists/* && \
       # use latest cmake
       pip3 install cmake --upgrade && \
       update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force
-
+      
 WORKDIR /root
 
 ADD nvcodec.sh .
