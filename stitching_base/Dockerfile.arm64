@@ -77,5 +77,6 @@ RUN bash spdlog.sh && rm -rfv spdlog.sh spdlog
 ENV OPENBLAS_CORETYPE=ARMV8
 # basler mipi camera detect
 ENV GENICAM_GENTL64_PATH=/opt/dart-bcon-mipi/lib/
+ENV GOOGLE_APPLICATION_CREDENTIALS=/root/bepro-video-stitching/gcp-key.json 
 
 ENTRYPOINT ["/bin/bash"]
