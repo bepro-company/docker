@@ -25,6 +25,10 @@ RUN \
        libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libglfw3-dev libglfw3 freeglut3-dev \
        libzbar-dev libzbar0 libmediainfo-dev mediainfo libqrencode-dev \
       python3-gst-1.0 && \
+      echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | \
+      tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
+      apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && \ 
+      apt-get update -y && apt-get install google-cloud-sdk -y && \
       apt-get install --reinstall ca-certificates && \
       rm -rf /var/lib/apt/lists/* && \
       # use latest cmake
