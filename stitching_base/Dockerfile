@@ -1,4 +1,4 @@
-FROM floopcz/tensorflow_cc:ubuntu-cuda-2.6.0
+FROM floopcz/tensorflow_cc:ubuntu-cuda-2.6.2
 
 RUN \
       apt-get update -y && \
