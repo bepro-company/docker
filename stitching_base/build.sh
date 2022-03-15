@@ -1,6 +1,6 @@
 #!/bin/bash
 
-name_tag="stitching_base:22.03"
+name_tag="stitching_base:22.03_tensorrt"
 
 docker build -t bepro/$name_tag .
 

@@ -1,4 +1,4 @@
-FROM floopcz/tensorflow_cc:ubuntu-cuda-2.6.0
+FROM nvcr.io/nvidia/tensorrt:20.03-py3
 
 RUN \
       apt-get update -y && \
@@ -23,6 +23,7 @@ RUN \
       # use python 3.7
       update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
       update-alternatives --config python3 && \
+      python3 -m pip install --upgrade pip && \
       cd /usr/include/linux && \
       ln -s -f ../libv4l1-videodev.h videodev.h && \
       # libgirepository1.0-dev required for gi module in python (for stitching unit test)
