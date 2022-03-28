@@ -20,6 +20,7 @@ cd ffmpeg
   --enable-libfdk-aac \
   --enable-libx264 \
   --enable-libx265 \
+  --enable-pthreads \
   --extra-cflags=-I/usr/local/cuda/include \
   --extra-ldflags=-L/usr/local/cuda/lib64
 make -j$(nproc) && make install

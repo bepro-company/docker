@@ -59,7 +59,7 @@ ADD ffmpeg.sh .
 RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
 
 ADD opencv.sh .
-RUN bash opencv.sh && rm -rfv opencv.sh opencv-3.4.12 opencv_contrib-3.4.12
+RUN bash opencv.sh && rm -rfv opencv.sh opencv-3.4.16 opencv_contrib-3.4.16
 
 ADD live555.sh .
 RUN bash live555.sh && rm -rfv live555.sh

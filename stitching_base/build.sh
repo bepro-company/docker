@@ -1,6 +1,6 @@
 #!/bin/bash
 
-name_tag="stitching_base:21.11"
+name_tag="stitching_base:22.03"
 
 docker build -t bepro/$name_tag .
 
