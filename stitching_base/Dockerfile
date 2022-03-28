@@ -79,4 +79,7 @@ RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
 ADD spdlog.sh .
 RUN bash spdlog.sh && rm -rfv spdlog.sh spdlog
 
+ADD toml11.sh .
+RUN bash toml11.sh && rm -rfv toml11.sh toml11
+
 ENTRYPOINT ["/bin/bash"]

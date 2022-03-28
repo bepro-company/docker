@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/l4t-base:r32.4.4
+FROM nvcr.io/nvidia/l4t-base:r32.6.1
 
 RUN \
       apt-get update -y && \
@@ -67,6 +67,9 @@ RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
 
 ADD spdlog.sh .
 RUN bash spdlog.sh && rm -rfv spdlog.sh spdlog
+
+ADD toml11.sh .
+RUN bash toml11.sh && rm -rfv toml11.sh toml11
 
 # for import numpy
 ENV OPENBLAS_CORETYPE=ARMV8
