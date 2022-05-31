@@ -1,4 +1,6 @@
-FROM debian:buster as base
+# ffmpeg 빌드를 위한 도커 이미지
+# https://hub.docker.com/r/jrottenberg/ffmpeg/dockerfile
+FROM jrottenberg/ffmpeg:4.3-ubuntu1804 as base
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl=7.64.0-4+deb10u1 \
@@ -28,7 +30,6 @@ RUN apt-get update \
        libglib2.0-0 \
        libgl1-mesa-glx \
        libcairo2=1.16.0-4 \
-       ffmpeg=7:4.1.6-1~deb10u1 \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists*
 
@@ -44,5 +45,8 @@ RUN ./install.sh \
 
 # gcloud binary PATH 추가
 ENV PATH=$PATH:/google-cloud-sdk/bin
+
+# ffmpeg 라이브러리 연동
+ENV LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
 
 RUN ffmpeg -version
