@@ -3,7 +3,7 @@
 FROM jrottenberg/ffmpeg:4.3-ubuntu1804 as base
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl=7.58.0-2ubuntu3.10 \
+    && apt-get install -y --no-install-recommends curl \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists*
 
@@ -16,19 +16,20 @@ RUN curl -sSLO https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google
     && rm google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz
 
 
-FROM python:3.7-slim as release
+FROM python:3.7-slim-bullseye as release
 
 # ffmpeg과 관련된 libgomp1 라이브러리 설치
 # opencv와 관련된 libglib2, libgl1-mesa-glx 라이브러리 설치
 # bepro-python과 관련된 procps, gcc, git 설치
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libgomp1=8.3.0-6 \
-       procps=2:3.3.15-2 \ 
-       gcc=4:8.3.0-1 \ 
-       git=1:2.20.1-2+deb10u3 \
-       libc6-dev=2.28-10 \
+    && apt-get install -y --no-install-recommends libgomp1=10.2.1-6 \
+       procps=2:3.3.17-5 \
+       gcc=4:10.2.1-1 \
+       git=1:2.30.2-1 \
+       libc6-dev=2.31-13+deb11u3 \
        libglib2.0-0 \
        libgl1-mesa-glx \
+       libcairo2 \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists*
 
