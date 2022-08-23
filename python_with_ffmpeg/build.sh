@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker build -t "python_with_ffmpeg:3.7" -t "python_with_ffmpeg" .
+docker build -t "python_with_ffmpeg:3.8" .
 docker tag python_with_ffmpeg:latest bepro/python_with_ffmpeg:latest
 docker tag python_with_ffmpeg:3.7 bepro/python_with_ffmpeg:3.7
 
