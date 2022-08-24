@@ -8,10 +8,10 @@ FROM jrottenberg/ffmpeg:5.1-ubuntu2004
 # - cairo for CairoSVG
 # - wget for transparent dependencies in graphic-video
 # - git for dependencies installation described as git
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends python3 python3-pip locales libcairo2 wget git \
-    && apt-get purge -y --auto-remove \
-    && rm -rf /var/lib/apt/lists*
+# - glib for cv2 contrib module dependencies
+RUN DEBIAN_FRONTEND=noninteractive apt update \
+    && apt install -y --no-install-recommends python3 python3-pip locales libcairo2 wget git libglib2.0-0 \
+    && apt purge -y --auto-remove
 
 # Setup locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
