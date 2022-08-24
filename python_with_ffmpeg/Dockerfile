@@ -6,8 +6,10 @@ FROM jrottenberg/ffmpeg:5.1-ubuntu2004
 # - wget for gcloud download
 # - locales for setup locale
 # - cairo for CairoSVG
+# - wget for transparent dependencies in graphic-video
+# - git for dependencies installation described as git
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends python3 python3-pip locales libcairo2 \
+    && apt-get install -y --no-install-recommends python3 python3-pip locales libcairo2 wget git \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists*
 
