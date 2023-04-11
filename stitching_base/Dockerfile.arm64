@@ -1,4 +1,5 @@
-FROM nvcr.io/nvidia/l4t-base:r32.6.1
+#FROM nvcr.io/nvidia/l4t-base:r35.2.1
+FROM nvcr.io/nvidia/l4t-ml:r35.2.1-py3
 
 RUN \
       apt-get update -y && \
@@ -8,13 +9,13 @@ RUN \
       # node v14 (LTS until 2023-04-30)
       curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
       apt-get install -y --no-install-recommends \
-       python3.7 python3.7-dev python3.7-venv python3-pip python3-setuptools python3-numpy nodejs build-essential \
+       python3.8 python3.8-dev python3.8-venv python3-pip python3-setuptools python3-numpy nodejs build-essential \
        automake libtool unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev \
        libpng-dev libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev \
        libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev libtiff-dev libavcodec-dev libavformat-dev \
        libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev ffmpeg && \
-      # use python 3.7
-      update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
+      # use python 3.8
+      update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
       update-alternatives --config python3 && \
       cd /usr/include/linux && \
       ln -s -f ../libv4l1-videodev.h videodev.h && \
@@ -36,19 +37,19 @@ RUN \
       pip install pygit2 && \
       pip install --no-cache-dir --exists-action w 'dvc[gs]' && \
       pip install gcovr && \
-      # qr-libsynch for python3.6
-      python3.6 -m pip install setuptools
+      # qr-libsynch for python3.8
+      python3.8 -m pip install setuptools
 WORKDIR /root
 
 # is this used?
 ADD nvcodec.sh .
 RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
 
-ADD tensorflow_prebuilt.sh .
-RUN bash tensorflow_prebuilt.sh && rm -rfv tensorflow_prebuilt.sh 
+# ADD tensorflow_prebuilt.sh .
+# RUN bash tensorflow_prebuilt.sh && rm -rfv tensorflow_prebuilt.sh 
 
-ADD opencv.sh.arm64 ./opencv.sh
-RUN bash opencv.sh && rm -rfv opencv.sh
+# ADD opencv.sh.arm64 ./opencv.sh
+# RUN bash opencv.sh && rm -rfv opencv.sh
 
 ADD live555.sh .
 RUN bash live555.sh && rm -rfv live555.sh
@@ -62,8 +63,8 @@ RUN bash googletest.sh && rm -rfv googletest.sh googletest
 ADD gst-qroverlay.sh .
 RUN bash gst-qroverlay.sh && rm -rfv gst-qroverlay.sh gst-qroverlay
 
-ADD qr-lipsync.sh .
-RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
+#ADD qr-lipsync.sh .
+#RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
 
 ADD spdlog.sh .
 RUN bash spdlog.sh && rm -rfv spdlog.sh spdlog
@@ -77,6 +78,9 @@ RUN bash easy_profiler.sh && rm -rfv easy_profiler.sh easy_profiler
 # for import numpy
 ENV OPENBLAS_CORETYPE=ARMV8
 # basler mipi camera detect
-ENV GENICAM_GENTL64_PATH=/opt/dart-bcon-mipi/lib/
+# ENV GENICAM_GENTL64_PATH=/opt/dart-bcon-mipi/lib/
+
+# ADD opencv.sh.arm64 ./opencv.sh
+# RUN bash opencv.sh && rm -rfv opencv.sh
 
 ENTRYPOINT ["/bin/bash"]

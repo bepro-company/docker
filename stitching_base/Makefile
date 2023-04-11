@@ -1,4 +1,4 @@
-tag_name=bepro/stitching_base:latest
+tag_name=bepro/stitching_arm_base:framos
 run_options=--runtime=nvidia -e NVIDIA_DRIVER_CAPABILITIES=utility,video,compute
 
 build:
