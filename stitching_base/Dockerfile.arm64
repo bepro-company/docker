@@ -80,7 +80,7 @@ ENV OPENBLAS_CORETYPE=ARMV8
 # basler mipi camera detect
 # ENV GENICAM_GENTL64_PATH=/opt/dart-bcon-mipi/lib/
 
-# ADD opencv.sh.arm64 ./opencv.sh
-# RUN bash opencv.sh && rm -rfv opencv.sh
+ADD opencv4.sh.arm64 ./opencv4.sh
+RUN bash opencv4.sh && rm -rfv opencv4.sh
 
 ENTRYPOINT ["/bin/bash"]
