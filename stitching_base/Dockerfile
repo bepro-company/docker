@@ -1,5 +1,8 @@
 FROM floopcz/tensorflow_cc:ubuntu-cuda-2.6.0
 
+RUN apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/3bf863cc.pub
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN \
       apt-get update -y && \
       # software-properties-common for add-apt-repository
@@ -20,9 +23,11 @@ RUN \
        libpng-dev libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev \
        libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev libjasper1 libtiff-dev libavcodec-dev libavformat-dev \
        libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev && \
+       
       # use python 3.7
       update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
       update-alternatives --config python3 && \
+      curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py --force-reinstall && \
       cd /usr/include/linux && \
       ln -s -f ../libv4l1-videodev.h videodev.h && \
       # libgirepository1.0-dev required for gi module in python (for stitching unit test)
@@ -33,12 +38,12 @@ RUN \
        libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libglfw3-dev libglfw3 freeglut3-dev \
        libzbar-dev libzbar0 libnvvpi1 vpi1-dev libmediainfo-dev mediainfo libqrencode-dev \
        gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
-       gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc libgirepository1.0-dev && \
+       gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc libgirepository1.0-dev tcl && \
       # pvs-studio static analyzer
-      wget -q -O - https://files.pvs-studio.com/etc/pubkey.txt | apt-key add - && \
-      wget -O /etc/apt/sources.list.d/viva64.list https://files.pvs-studio.com/etc/viva64.list && \
-      apt update -yq && apt install -yq pvs-studio strace && \ 
-      pvs-studio --version && \
+      # wget -q -O - https://files.pvs-studio.com/etc/pubkey.txt | apt-key add - && \
+      # wget -O /etc/apt/sources.list.d/viva64.list https://files.pvs-studio.com/etc/viva64.list && \
+      # apt update -yq && apt install -yq pvs-studio strace && \ 
+      # pvs-studio --version
       apt clean -yq && \
       echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | \
       tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
