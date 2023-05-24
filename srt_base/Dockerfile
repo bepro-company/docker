@@ -1,3 +1,4 @@
+FROM scratch
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
@@ -12,7 +13,6 @@ RUN \
        libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev libjasper1 libtiff-dev libavcodec-dev libavformat-dev \
        libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev && \
        
-      # use python 3.8
       update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
       update-alternatives --config python3 && \
       curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py --force-reinstall && \
