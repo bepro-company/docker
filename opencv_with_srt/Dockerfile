@@ -36,6 +36,7 @@ ADD ffmpeg.sh .
 RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
 
 ADD opencv.sh .
-RUN bash opencv.sh && rm -rfv opencv.sh opencv-3.4.16 opencv_contrib-3.4.16
+# RUN bash opencv.sh && rm -rfv opencv.sh opencv-3.4.16 opencv_contrib-3.4.16
+RUN bash opencv.sh
 
 ENTRYPOINT ["/bin/bash"]
