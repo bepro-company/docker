@@ -1,4 +1,4 @@
-FROM scratch
+FROM nvidia/cuda:11.3.0-base-ubuntu18.04
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
@@ -17,21 +17,20 @@ RUN \
       update-alternatives --config python3 && \
       curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py --force-reinstall && \
       cd /usr/include/linux && \
-      
+      ln -s -f ../libv4l1-videodev.h videodev.h && \
       apt-get install -y --no-install-recommends \
-       sudo g++-7 gdb libgtk2.0-dev libtbb-dev \
-       qt5-default libatlas-base-dev libfaac-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev \
-       libopencore-amrwb-dev x264 v4l-utils libva-dev libx11-dev xorg-dev libglew1.5 libglew1.5-dev \
+       sudo g++-7 gdb qt5-default libatlas-base-dev libfaac-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev \
+       libopencore-amrwb-dev x264 libva-dev libx11-dev xorg-dev libglew1.5 libglew1.5-dev \
        libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libglfw3-dev libglfw3 freeglut3-dev \
-       libzbar-dev libzbar0 libnvvpi1 vpi1-dev libmediainfo-dev mediainfo libqrencode-dev && \
-       
-      apt clean -yq && \
-      apt-get install --reinstall ca-certificates && \
-      rm -rf /var/lib/apt/lists/* && \
+       libzbar-dev libzbar0 libmediainfo-dev mediainfo libqrencode-dev tcl && \
+
       pip3 install cmake --upgrade && \
       update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force
       
 WORKDIR /root
+
+ADD nvcodec.sh .
+RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
 
 ADD ffmpeg.sh .
 RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
