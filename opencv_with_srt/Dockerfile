@@ -7,7 +7,7 @@ RUN \
       add-apt-repository -y "deb http://security.ubuntu.com/ubuntu xenial-security main" && \
       curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
       apt-get install -y --no-install-recommends \
-       python3.8 python3.8-dev python3.8-venv python3-pip python3-setuptools python3-numpy nodejs build-essential \
+       python3.8 python3-dev python3.8-venv libpython3.8-dev python3-pip python3-setuptools python3-numpy nodejs build-essential \
        automake libtool unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev \
        libpng-dev libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev \
        libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev libjasper1 libtiff-dev libavcodec-dev libavformat-dev \
@@ -35,8 +35,7 @@ RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
 ADD ffmpeg.sh .
 RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
 
-ADD opencv.sh .
-# RUN bash opencv.sh && rm -rfv opencv.sh opencv-3.4.16 opencv_contrib-3.4.16
-RUN bash opencv.sh
+ADD opencv-python.sh .
+RUN bash opencv-python.sh && rm -rfv opencv-python.sh opencv-python
 
 ENTRYPOINT ["/bin/bash"]
