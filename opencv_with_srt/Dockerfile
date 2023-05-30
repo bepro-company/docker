@@ -35,7 +35,9 @@ RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
 ADD ffmpeg.sh .
 RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
 
+ADD pyproject.toml .
 ADD opencv-python.sh .
-RUN bash opencv-python.sh && rm -rfv opencv-python.sh opencv-python
+# RUN bash opencv-python.sh && rm -rfv pyproject.toml opencv-python.sh opencv-python
+RUN bash opencv-python.sh
 
 ENTRYPOINT ["/bin/bash"]
