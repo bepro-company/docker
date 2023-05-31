@@ -39,11 +39,6 @@ RUN \
        libzbar-dev libzbar0 libnvvpi1 vpi1-dev libmediainfo-dev mediainfo libqrencode-dev \
        gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
        gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc libgirepository1.0-dev tcl && \
-      # pvs-studio static analyzer
-      # wget -q -O - https://files.pvs-studio.com/etc/pubkey.txt | apt-key add - && \
-      # wget -O /etc/apt/sources.list.d/viva64.list https://files.pvs-studio.com/etc/viva64.list && \
-      # apt update -yq && apt install -yq pvs-studio strace && \ 
-      # pvs-studio --version
       apt clean -yq && \
       echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | \
       tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
