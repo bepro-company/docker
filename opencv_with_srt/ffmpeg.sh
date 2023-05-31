@@ -1,5 +1,4 @@
 #!/bin/bash
-apt install tcl
 git clone https://github.com/Haivision/srt.git
 cd srt
 git checkout v1.4.4
