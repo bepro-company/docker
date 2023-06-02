@@ -1,5 +1,8 @@
 FROM floopcz/tensorflow_cc:ubuntu-cuda-2.6.0
 
+RUN apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/3bf863cc.pub
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN \
       apt-get update -y && \
       # software-properties-common for add-apt-repository
@@ -23,14 +26,15 @@ RUN \
       # use python 3.7
       update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
       update-alternatives --config python3 && \
+      curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py --force-reinstall && \
       cd /usr/include/linux && \
       ln -s -f ../libv4l1-videodev.h videodev.h && \
       # libgirepository1.0-dev required for gi module in python (for stitching unit test)
       apt-get install -y --no-install-recommends \
        sudo g++-7 gdb clang-format-10 libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgtk2.0-dev libtbb-dev \
-       qt5-default libatlas-base-dev libfaac-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev \
+       libgtkglext1 libgtkglext1-dev qt5-default libatlas-base-dev libfaac-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev \
        libopencore-amrwb-dev x264 v4l-utils libva-dev libx11-dev xorg-dev libglew1.5 libglew1.5-dev \
-       libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libglfw3-dev libglfw3 freeglut3-dev \
+       libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libqt4-opengl-dev libglfw3-dev libglfw3 freeglut3-dev \
        libzbar-dev libzbar0 libnvvpi1 vpi1-dev libmediainfo-dev mediainfo libqrencode-dev \
        gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
        gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc libgirepository1.0-dev && \
