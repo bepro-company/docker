@@ -39,4 +39,4 @@ ADD pyproject.toml .
 ADD opencv-python.sh .
 RUN bash opencv-python.sh && rm -rfv pyproject.toml opencv-python.sh
 
-ENTRYPOINT ["/bin/bash"]
+ENV PYTHONPATH="${PYTHONPATH}:/root/opencv-python/_skbuild/linux-x86_64-3.8/cmake-build/lib/python3"

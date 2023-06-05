@@ -7,7 +7,7 @@ $(info uname_m=$(uname_m))
 
 docker_file=Dockerfile
 tag_name=bepro/opencv:23.05
-run_options=`nvidia-smi &> /dev/null && echo "--runtime=nvidia -e NVIDIA_DRIVER_CAPABILITIES=utility,video,compute --network=host -e PYTHONPATH="${PYTHONPATH}:/root/opencv-python/_skbuild/linux-x86_64-3.8/cmake-build/lib/python3""`
+run_options=`nvidia-smi &> /dev/null && echo "--runtime=nvidia -e NVIDIA_DRIVER_CAPABILITIES=utility,video,compute --network=host"`
 
 build:
 	docker build --no-cache --progress=plain -t $(tag_name) -f Dockerfile .
