@@ -34,7 +34,7 @@ RUN \
        sudo g++-7 gdb clang-format-10 libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgtk2.0-dev libtbb-dev \
        libgtkglext1 libgtkglext1-dev qt5-default libatlas-base-dev libfaac-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev \
        libopencore-amrwb-dev x264 v4l-utils libva-dev libx11-dev xorg-dev libglew1.5 libglew1.5-dev \
-       libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libqt4-opengl-dev libglfw3-dev libglfw3 freeglut3-dev \
+       libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libglvnd0 libgl1 libglx0 libegl1 libglvnd-dev libgl1-mesa-dev libegl1-mesa-dev libqt4-opengl-dev libglfw3-dev libglfw3 freeglut3-dev \
        libzbar-dev libzbar0 libnvvpi1 vpi1-dev libmediainfo-dev mediainfo libqrencode-dev \
        gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
        gstreamer1.0-libav python3-gst-1.0 gstreamer1.0-tools dvc libgirepository1.0-dev && \
