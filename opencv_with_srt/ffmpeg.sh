@@ -21,7 +21,6 @@ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
   --enable-cuvid \
   --enable-nvenc \
   --enable-nonfree \
-  --enable-libnpp \
   --enable-gpl \
   --enable-gnutls \
   --enable-libfdk-aac \
