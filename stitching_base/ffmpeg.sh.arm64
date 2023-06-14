@@ -1,0 +1,30 @@
+#!/bin/bash
+sudo apt update -y
+sudo apt remove -y ffmpeg
+sudo apt autoremove -y
+sudo apt remove --purge -y ffmpeg
+
+mkdir ffmpeg_top
+cd ffmpeg_top
+
+git clone https://github.com/bepro-company/jetson-ffmpeg.git
+cd jetson-ffmpeg
+mkdir build
+cd build
+cmake ..
+make -j$(nproc)
+sudo make install
+sudo ldconfig
+
+cd ../..
+git clone git://source.ffmpeg.org/ffmpeg.git -b release/4.2 --depth=1
+cd ffmpeg
+wget https://github.com/jocover/jetson-ffmpeg/raw/master/ffmpeg_nvmpi.patch
+git apply ffmpeg_nvmpi.patch
+./configure --enable-nvmpi
+make -j$(nproc)
+sudo make install
+sudo ldconfig
+
+which ffmpeg
+ffmpeg -encoders | grep nv
