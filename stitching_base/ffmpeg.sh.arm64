@@ -1,9 +1,4 @@
 #!/bin/bash
-sudo apt update -y
-sudo apt remove -y ffmpeg
-sudo apt autoremove -y
-sudo apt remove --purge -y ffmpeg
-
 mkdir ffmpeg_top
 cd ffmpeg_top
 
