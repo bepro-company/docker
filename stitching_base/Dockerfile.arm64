@@ -12,7 +12,7 @@ RUN \
        automake libtool unzip nasm yasm checkinstall cmake pkg-config yasm git gfortran libjpeg8-dev \
        libpng-dev libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev \
        libssh-dev gnutls-bin libgnutls28-dev libavdevice-dev libtiff-dev libavcodec-dev libavformat-dev \
-       libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev ffmpeg && \
+       libswscale-dev libavutil-dev libavresample-dev libdc1394-22-dev libxine2-dev libv4l-dev && \
       # use python 3.7
       update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
       update-alternatives --config python3 && \
@@ -73,6 +73,10 @@ RUN bash toml11.sh && rm -rfv toml11.sh toml11
 
 ADD easy_profiler.sh .
 RUN bash easy_profiler.sh && rm -rfv easy_profiler.sh easy_profiler
+
+COPY ./jetson_multimedia_api /usr/src/jetson_multimedia_api
+ADD ffmpeg.sh.arm64 ffmpeg.sh
+RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh
 
 # for import numpy
 ENV OPENBLAS_CORETYPE=ARMV8
