@@ -45,12 +45,6 @@ WORKDIR /root
 ADD nvcodec.sh .
 RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
 
-# ADD tensorflow_prebuilt.sh .
-# RUN bash tensorflow_prebuilt.sh && rm -rfv tensorflow_prebuilt.sh 
-
-# ADD opencv.sh.arm64 ./opencv.sh
-# RUN bash opencv.sh && rm -rfv opencv.sh
-
 ADD live555.sh .
 RUN bash live555.sh && rm -rfv live555.sh
 
@@ -75,10 +69,11 @@ RUN bash toml11.sh && rm -rfv toml11.sh toml11
 ADD easy_profiler.sh .
 RUN bash easy_profiler.sh && rm -rfv easy_profiler.sh easy_profiler
 
+ADD ffmpeg.sh.arm64 ffmpeg.sh
+RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh
+
 # for import numpy
 ENV OPENBLAS_CORETYPE=ARMV8
-# basler mipi camera detect
-# ENV GENICAM_GENTL64_PATH=/opt/dart-bcon-mipi/lib/
 
 ADD opencv4.sh.arm64 ./opencv4.sh
 RUN bash opencv4.sh && rm -rfv opencv4.sh
