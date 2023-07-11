@@ -1,6 +1,6 @@
 #!/bin/bash
 
-name_tag="stitching_arm_base:23.06"
+name_tag="stitching_arm_base:23.07"
 
 cp -R /usr/src/jetson_multimedia_api jetson_multimedia_api
 docker build -f Dockerfile.arm64 -t bepro/$name_tag .

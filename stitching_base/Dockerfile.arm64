@@ -34,7 +34,8 @@ RUN \
       update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force && \
       # dvc work around
       pip install pygit2 && \
-      pip install --no-cache-dir --exists-action w 'dvc[gs]' && \
+      pip install --force-reinstall -v "fsspec==2022.11.0" && \
+      pip install 'dvc[gs]' && \
       pip install gcovr && \
       # qr-libsynch for python3.6
       python3.6 -m pip install setuptools
@@ -46,9 +47,6 @@ RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
 
 ADD tensorflow_prebuilt.sh .
 RUN bash tensorflow_prebuilt.sh && rm -rfv tensorflow_prebuilt.sh 
-
-ADD opencv.sh.arm64 ./opencv.sh
-RUN bash opencv.sh && rm -rfv opencv.sh
 
 ADD live555.sh .
 RUN bash live555.sh && rm -rfv live555.sh
@@ -77,6 +75,9 @@ RUN bash easy_profiler.sh && rm -rfv easy_profiler.sh easy_profiler
 COPY ./jetson_multimedia_api /usr/src/jetson_multimedia_api
 ADD ffmpeg.sh.arm64 ffmpeg.sh
 RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh
+
+ADD opencv.sh.arm64 ./opencv.sh
+RUN bash opencv.sh && rm -rfv opencv.sh
 
 # for import numpy
 ENV OPENBLAS_CORETYPE=ARMV8
