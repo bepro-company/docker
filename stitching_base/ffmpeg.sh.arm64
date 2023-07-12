@@ -19,7 +19,7 @@ git clone git://source.ffmpeg.org/ffmpeg.git -b release/4.2 --depth=1
 cd ffmpeg
 wget https://github.com/bepro-company/jetson-ffmpeg/raw/master/ffmpeg_nvmpi.patch
 git apply ffmpeg_nvmpi.patch
-./configure --enable-nvmpi
+./configure --enable-nvmpi --enable-shared
 make -j$(nproc)
 sudo make install
 sudo ldconfig

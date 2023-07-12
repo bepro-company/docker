@@ -76,6 +76,11 @@ COPY ./jetson_multimedia_api /usr/src/jetson_multimedia_api
 ADD ffmpeg.sh.arm64 ffmpeg.sh
 RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh
 
+RUN sudo -H python3.7 -m pip uninstall -y numpy \
+    sudo apt purge -y python3-numpy \
+    sudo -H python3.7 -m pip install -y --upgrade pip \
+    sudo -H python3.7 -m pip install -y numpy
+
 ADD opencv.sh.arm64 ./opencv.sh
 RUN bash opencv.sh && rm -rfv opencv.sh
 
