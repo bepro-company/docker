@@ -76,16 +76,13 @@ COPY ./jetson_multimedia_api /usr/src/jetson_multimedia_api
 ADD ffmpeg.sh.arm64 ffmpeg.sh
 RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh
 
-RUN sudo -H python3.7 -m pip uninstall -y numpy \
-    sudo apt purge -y python3-numpy \
-    sudo -H python3.7 -m pip install -y --upgrade pip \
-    sudo -H python3.7 -m pip install -y numpy
-
-ADD opencv.sh.arm64 ./opencv.sh
-RUN bash opencv.sh && rm -rfv opencv.sh
-
 # for import numpy
 ENV OPENBLAS_CORETYPE=ARMV8
+
+ADD opencv_python.patch ./opencv_python.patch
+ADD opencv.sh.arm64 ./opencv.sh.arm64
+RUN bash opencv.sh.arm64 && rm -rfv opencv.sh.arm64
+
 # basler mipi camera detect
 ENV GENICAM_GENTL64_PATH=/opt/dart-bcon-mipi/lib/
 
