@@ -7,7 +7,7 @@ unzip opencv.zip
 unzip opencv_contrib.zip
 rm -fv opencv*.zip
 
-cd opencv-3.4.16
+cd opencv-4.7.0
 mkdir build
 cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
