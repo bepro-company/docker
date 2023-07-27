@@ -1,5 +1,8 @@
 FROM floopcz/tensorflow_cc:ubuntu-cuda-2.6.0
 
+RUN apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/3bf863cc.pub
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN \
       apt-get update -y && \
       # software-properties-common for add-apt-repository
