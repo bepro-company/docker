@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="113b1595-142c-47ce-b65a-256d892818eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/docker.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_with_ffmpeg/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/python_with_ffmpeg/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_with_ffmpeg/Dockerfile.libcairo" beforeDir="false" afterPath="$PROJECT_DIR$/python_with_ffmpeg/Dockerfile.libcairo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stitching_base/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/stitching_base/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stitching_base/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/stitching_base/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stitching_base/opencv.sh" beforeDir="false" afterPath="$PROJECT_DIR$/stitching_base/opencv.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stitching_base/ffmpeg.sh" beforeDir="false" afterPath="$PROJECT_DIR$/stitching_base/ffmpeg.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +111,7 @@
       <workItem from="1654003394865" duration="2850000" />
       <workItem from="1661364759404" duration="3891000" />
       <workItem from="1687995462185" duration="876000" />
-      <workItem from="1690458482003" duration="136000" />
+      <workItem from="1690458482003" duration="167000" />
     </task>
     <servers />
   </component>
