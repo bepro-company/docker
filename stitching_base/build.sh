@@ -4,9 +4,6 @@ name_tag="stitching_base:cv_gl_ffmpeg5"
 
 docker build -t bepro/$name_tag .
 
-CR_PAT="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"
-CR_USER="bepro-company"
-
 # CR_USER: github user id
 # CR_PAT: https://docs.github.com/en/free-pro-team@latest/packages/managing-container-images-with-github-container-registry/pushing-and-pulling-docker-images#authenticating-to-github-container-registry
 if [[ $CR_USER ]] && [[ $CR_PAT ]]
