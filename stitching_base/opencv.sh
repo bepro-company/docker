@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # opencv 3.4.12
-wget -qO opencv.zip https://github.com/opencv/opencv/archive/3.4.16.zip
-wget -qO opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.16.zip
+wget -qO opencv.zip https://github.com/opencv/opencv/archive/4.7.0.zip
+wget -qO opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.7.0.zip
 unzip opencv.zip
 unzip opencv_contrib.zip
 rm -fv opencv*.zip
