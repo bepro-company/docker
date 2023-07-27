@@ -1,6 +1,6 @@
 #!/bin/bash
 
-name_tag="stitching_base:22.03"
+name_tag="stitching_base:cv_gl_ffmpeg5"
 
 docker build -t bepro/$name_tag .
 
