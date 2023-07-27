@@ -65,17 +65,17 @@ RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh ffmpeg && ldconfig && ffmpeg -version
 ADD opencv.sh .
 RUN bash opencv.sh && rm -rfv opencv.sh opencv-4.7.0 opencv_contrib-4.7.0
 
-ADD live555.sh .
-RUN bash live555.sh && rm -rfv live555.sh
+#ADD live555.sh .
+#RUN bash live555.sh && rm -rfv live555.sh
 
-ADD hlsserver.sh .
-RUN bash hlsserver.sh && rm -rfv hlsserver.sh hls-server
+#ADD hlsserver.sh .
+#RUN bash hlsserver.sh && rm -rfv hlsserver.sh hls-server
 
-ADD googletest.sh .
-RUN bash googletest.sh && rm -rfv googletest.sh googletest
+#ADD googletest.sh .
+#RUN bash googletest.sh && rm -rfv googletest.sh googletest
 
-ADD gst-qroverlay.sh .
-RUN bash gst-qroverlay.sh && rm -rfv gst-qroverlay.sh gst-qroverlay
+#ADD gst-qroverlay.sh .
+#RUN bash gst-qroverlay.sh && rm -rfv gst-qroverlay.sh gst-qroverlay
 
 ADD qr-lipsync.sh .
 RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
@@ -83,7 +83,7 @@ RUN bash qr-lipsync.sh && rm -rfv qr-lipsync.sh qr-lipsync
 ADD spdlog.sh .
 RUN bash spdlog.sh && rm -rfv spdlog.sh spdlog
 
-ADD toml11.sh .
-RUN bash toml11.sh && rm -rfv toml11.sh toml11
+#ADD toml11.sh .
+#RUN bash toml11.sh && rm -rfv toml11.sh toml11
 
 ENTRYPOINT ["/bin/bash"]
