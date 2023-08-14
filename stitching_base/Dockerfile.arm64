@@ -23,7 +23,7 @@ RUN \
        qt5-default libatlas-base-dev libfaac-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev \
        libopencore-amrwb-dev x264 v4l-utils libva-dev libx11-dev xorg-dev libglew1.5 libglew1.5-dev \
        libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libglfw3-dev libglfw3 freeglut3-dev \
-       libzbar-dev libzbar0 libmediainfo-dev mediainfo libqrencode-dev \
+       libzbar-dev libzbar0 libmediainfo-dev mediainfo libqrencode-dev libgstrtspserver-1.0 gstreamer1.0-rtsp \
       python3-gst-1.0 && \
       apt-get install --reinstall ca-certificates && \
       rm -rf /var/lib/apt/lists/* && \
@@ -34,7 +34,8 @@ RUN \
       update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force && \
       # dvc work around
       pip install pygit2 && \
-      pip install --no-cache-dir --exists-action w 'dvc[gs]' && \
+      pip install --force-reinstall -v "fsspec==2022.11.0" && \
+      pip install 'dvc[gs]' && \
       pip install gcovr && \
       # qr-libsynch for python3.6
       python3.6 -m pip install setuptools
@@ -46,9 +47,6 @@ RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
 
 ADD tensorflow_prebuilt.sh .
 RUN bash tensorflow_prebuilt.sh && rm -rfv tensorflow_prebuilt.sh 
-
-ADD opencv.sh.arm64 ./opencv.sh
-RUN bash opencv.sh && rm -rfv opencv.sh
 
 ADD live555.sh .
 RUN bash live555.sh && rm -rfv live555.sh
@@ -80,6 +78,11 @@ RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh
 
 # for import numpy
 ENV OPENBLAS_CORETYPE=ARMV8
+
+ADD opencv_python.patch ./opencv_python.patch
+ADD opencv.sh.arm64 ./opencv.sh.arm64
+RUN bash opencv.sh.arm64 && rm -rfv opencv.sh.arm64
+
 # basler mipi camera detect
 ENV GENICAM_GENTL64_PATH=/opt/dart-bcon-mipi/lib/
 

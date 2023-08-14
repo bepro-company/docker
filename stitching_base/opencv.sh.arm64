@@ -41,6 +41,7 @@ git_source () {
     echo "Getting version '$1' of OpenCV"
     git clone --depth 1 --branch "$1" https://github.com/opencv/opencv.git
     git clone --depth 1 --branch "$1" https://github.com/opencv/opencv_contrib.git
+    patch /root/build_opencv/opencv/modules/python/src2/cv2.cpp < /root/opencv_python.patch
 }
 
 install_dependencies () {
@@ -51,6 +52,12 @@ install_dependencies () {
     sudo apt-get dist-upgrade -y --autoremove
     TZ=Europe/London
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+    # sudo -H python3.7 -m pip uninstall -y numpy
+    # sudo apt purge -y python3-numpy
+    # sudo -H python3.7 -m pip install --upgrade -q pip
+    # sudo -H python3.7 -m pip install -q numpy
+
     sudo apt-get install -y \
         build-essential \
         cmake \
