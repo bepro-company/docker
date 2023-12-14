@@ -1,6 +1,6 @@
 #!/bin/bash
 
-name_tag="lambda_docker_python:3.8"
+name_tag="lambda_docker_python:3.11"
 
 docker build -t bepro/$name_tag .
 
