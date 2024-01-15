@@ -1,8 +1,8 @@
 #!/bin/bash
-name_tag="stitching_arm_base:framos"
+name_tag="stitching_arm_base:framos_jp512"
 
-cp -R /usr/src/jetson_multimedia_api jetson_multimedia_api
-docker build -f Dockerfile.arm64 -t bepro/$name_tag .
+#cp -R /usr/src/jetson_multimedia_api jetson_multimedia_api
+#docker build -f Dockerfile.arm64 -t bepro/$name_tag .
 
 # CR_USER: github user id
 # CR_PAT: https://docs.github.com/en/free-pro-team@latest/packages/managing-container-images-with-github-container-registry/pushing-and-pulling-docker-images#authenticating-to-github-container-registry

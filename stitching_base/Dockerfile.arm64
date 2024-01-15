@@ -1,5 +1,8 @@
+# https://repo.download.nvidia.com/jetson/#Jetpack%205.1.2
+# https://catalog.ngc.nvidia.com/containers?filters=&orderBy=scoreDESC&query=L4t
 #FROM nvcr.io/nvidia/l4t-base:r35.2.1
-FROM nvcr.io/nvidia/l4t-ml:r35.2.1-py3
+#FROM nvcr.io/nvidia/l4t-ml:r35.2.1-py3
+FROM nvcr.io/nvidia/l4t-jetpack:r35.4.1
 
 RUN \
       apt-get update -y && \
@@ -45,8 +48,8 @@ WORKDIR /root
 ADD nvcodec.sh .
 RUN bash nvcodec.sh && rm -rfv nvcodec.sh nv-codec-headers
 
-ADD live555.sh .
-RUN bash live555.sh && rm -rfv live555.sh
+#ADD live555.sh .
+#RUN bash live555.sh && rm -rfv live555.sh
 
 ADD hlsserver.sh .
 RUN bash hlsserver.sh && rm -rfv hlsserver.sh hls-server
@@ -69,8 +72,8 @@ RUN bash toml11.sh && rm -rfv toml11.sh toml11
 ADD easy_profiler.sh .
 RUN bash easy_profiler.sh && rm -rfv easy_profiler.sh easy_profiler
 
-ADD ffmpeg.sh.arm64 ffmpeg.sh
-RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh
+#ADD ffmpeg.sh.arm64 ffmpeg.sh
+#RUN bash ffmpeg.sh && rm -rfv ffmpeg.sh
 
 # for import numpy
 ENV OPENBLAS_CORETYPE=ARMV8
