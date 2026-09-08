@@ -1,4 +1,4 @@
-FROM python:3.11-bullseye
+FROM python:3.11-bookworm
 
 RUN apt-get update
 RUN apt-get install -y unzip awscli git
