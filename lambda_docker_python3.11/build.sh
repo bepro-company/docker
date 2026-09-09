@@ -2,7 +2,7 @@
 
 name_tag="lambda_docker_python:3.11"
 
-docker build -t bepro/$name_tag .
+docker build --platform linux/amd64 -t bepro/$name_tag .
 
 # CR_USER: github user id
 # CR_PAT: https://docs.github.com/en/free-pro-team@latest/packages/managing-container-images-with-github-container-registry/pushing-and-pulling-docker-images#authenticating-to-github-container-registry
