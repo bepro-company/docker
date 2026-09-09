@@ -1,4 +1,4 @@
-FROM python:3.11-bullseye
+FROM python:3.11-bookworm
 
 # 패키지 (curl, git, aws, docker) 설치 + 정리
 RUN apt-get update && \
